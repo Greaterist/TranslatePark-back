@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('words', function (Blueprint $table) {
             $table->id();
-            $table->integer('status_id')->constrained('word_statuses', 'id');
+            $table->integer('status_id')->constrained('word_statuses', 'id')->default(0);
             $table->string('word', 20);
             $table->integer('language_id')->constrained('languages', 'id');
             $table->string('phonetic', 20);
