@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('first_word_id')->constrained('words', 'id');
             $table->integer('second_word_id')->constrained('words', 'id');
+            $table->integer('status_id')->constrained('translation_statuses', 'id')->default(0);
             $table->timestamps();
 
             $table->unique(['first_word_id', 'second_word_id']); //TODO check if its really unique
