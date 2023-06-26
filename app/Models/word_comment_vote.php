@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class word_comment_vote extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'user_id',
+        'word_comment_id',
+        'isPositive',
+    ];
 }

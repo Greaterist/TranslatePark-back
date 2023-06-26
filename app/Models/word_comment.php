@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class word_comment extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'text',
+        'language_id',
+        'creator_id',
+    ];
 }
