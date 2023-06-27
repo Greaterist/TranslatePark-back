@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('word', 20);
             $table->integer('language_id')->constrained('languages', 'id');
             $table->string('phonetic', 20);
+            $table->string('description', 200)->nullable();
             $table->integer('creator_id')->constrained('users', 'id');
             $table->timestamps();
             
