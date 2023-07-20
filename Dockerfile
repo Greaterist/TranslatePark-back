@@ -23,7 +23,7 @@ RUN useradd -m steve -p s3cre7Passw0rd
 
 USER steve
 
-CMD ["bash", "-c", "cd /tmp"]
+CMD ["bash", "-c", "ls"]
 
 #RUN composer install
 #CMD ["bash", "-c", "ls"]
