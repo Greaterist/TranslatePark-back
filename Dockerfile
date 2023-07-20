@@ -4,7 +4,7 @@ FROM archlinux
 
 # Install system dependencies
 RUN --mount=type=cache,sharing=locked,target=/var/cache/pacman \
-    pacman -Syu --noconfirm --needed base base-devel git php composer
+    pacman -Syu --noconfirm --needed base base-devel git php composer curl
 
     
 # Install PHP extensions
@@ -19,14 +19,17 @@ RUN --mount=type=cache,sharing=locked,target=/var/cache/pacman \
 
 # Create system user to run Composer and Artisan Commands
 RUN useradd -m steve -p s3cre7Passw0rd
+#CMD ["bash", "-c", "mkdir /laravel"]
+#RUN chown -R steve:steve /laravel
 
 
 USER steve
 
-CMD ["bash", "-c", "ls"]
 
-#RUN composer install
+
+RUN composer install
+RUN php artisan serve
 #CMD ["bash", "-c", "ls"]
-CMD ["bash", "-c", "composer install && php artisan serve"]
+#CMD ["bash", "-c", "composer install && php artisan serve"]
 #CMD ["bash", "-c", "composer update && php artisan serve"]
 #CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
