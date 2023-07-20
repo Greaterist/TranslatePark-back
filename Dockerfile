@@ -23,6 +23,8 @@ RUN useradd -m steve -p s3cre7Passw0rd
 
 USER steve
 
+CMD ["bash", "-c", "cd /tmp"]
+
 #RUN composer install
 #CMD ["bash", "-c", "ls"]
 CMD ["bash", "-c", "composer install && php artisan serve"]
