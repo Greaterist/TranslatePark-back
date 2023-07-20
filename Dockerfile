@@ -1,34 +1,30 @@
-FROM php:8.0-fpm-alpine
+FROM archlinux
 
 # Arguments defined in docker-compose.yml
-ARG user
-ARG uid
 
 # Install system dependencies
-RUN apk update && apk add --no-cache \
+RUN pacman -S \
     git \
     curl \
     libpng-dev \
     libonig-dev \
     libxml2-dev \
     zip \
-    unzip
-
-# Clear cache
-RUN apt-get clean && rm -rf /var/lib/apt/lists/*
-
+    unzip \
+    composer \
+    
 # Install PHP extensions
-RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
+#RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 
 
 
 
 
 # Get latest Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+#COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Create system user to run Composer and Artisan Commands
-RUN adduser -G www-data,root -u $uid -d /home/$user $user
+RUN useradd -G www-data,root -d /home/user user
 RUN mkdir -p /home/$user/.composer && \
     chown -R $user:$user /home/$user
 
@@ -36,7 +32,7 @@ RUN mkdir -p /home/$user/.composer && \
 # Set working directory
 WORKDIR /var/www
 
-USER $user
+USER user
 
 #RUN composer install
 #CMD ["bash", "-c", "ls"]
