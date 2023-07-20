@@ -6,4 +6,4 @@ RUN apt-get update && apt-get install -y \
 RUN docker-php-ext-install pdo pdo_pgsql zip
 
 
-CMD ["bash", "-c", "php artisan serve"]
+CMD ["bash", "-c", "composer update && php artisan serve"]
