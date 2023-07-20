@@ -21,9 +21,6 @@ RUN --mount=type=cache,sharing=locked,target=/var/cache/pacman \
 RUN useradd -m steve -p s3cre7Passw0rd
 
 
-# Set working directory
-WORKDIR /var/www
-
 USER steve
 
 #RUN composer install
