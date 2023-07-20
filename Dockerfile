@@ -18,15 +18,13 @@ RUN --mount=type=cache,sharing=locked,target=/var/cache/pacman \
 #COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Create system user to run Composer and Artisan Commands
-RUN useradd -G www-data,root -d /home/user user
-RUN mkdir -p /home/$user/.composer && \
-    chown -R $user:$user /home/$user
+RUN useradd -m steve -p s3cre7Passw0rd
 
 
 # Set working directory
 WORKDIR /var/www
 
-USER user
+USER steve
 
 #RUN composer install
 #CMD ["bash", "-c", "ls"]
