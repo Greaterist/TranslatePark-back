@@ -5,12 +5,7 @@ FROM archlinux
 # Install system dependencies
 RUN pacman -S \
     git \
-    curl \
-    libpng-dev \
-    libonig-dev \
-    libxml2-dev \
-    zip \
-    unzip \
+    php \
     composer
     
 # Install PHP extensions
