@@ -8,6 +8,12 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
+RUN useradd -G www-data,root -u $uid -d /home/$user $user
+RUN mkdir -p /home/$user/.composer && \
+    chown -R $user:$user /home/$user
+
+USER $user
+
 #RUN composer install
 #CMD ["bash", "-c", "ls"]
 CMD ["bash", "-c", "composer install && php artisan serve"]
