@@ -11,7 +11,7 @@ RUN pacman -S \
     libxml2-dev \
     zip \
     unzip \
-    composer \
+    composer
     
 # Install PHP extensions
 #RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
