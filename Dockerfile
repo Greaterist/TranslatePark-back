@@ -3,10 +3,9 @@ FROM archlinux
 # Arguments defined in docker-compose.yml
 
 # Install system dependencies
-RUN pacman -S \
-    git \
-    php \
-    composer
+RUN --mount=type=cache,sharing=locked,target=/var/cache/pacman \
+    pacman -Syu --noconfirm --needed base base-devel git php composer
+
     
 # Install PHP extensions
 #RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
