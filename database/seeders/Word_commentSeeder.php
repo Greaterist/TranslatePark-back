@@ -8,7 +8,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
-class WordSeeder extends Seeder
+class Word_commentSeeder extends Seeder
 {
     /**
      * DONE
@@ -27,11 +27,10 @@ class WordSeeder extends Seeder
         $data = [];
         for ($i=0; $i<50;$i++){
             $data[] = [
-                'status_id' => 1,
-                'word' => fake()->word(),
-                'language_id' => numberBetween(0, 2),
-                'phonetic' => fake()->word(),
-                'creator_id' => numberBetween(0, 10),
+                'text' => fake()->senence(6, true),
+                'language_id' => fake()->numberBetween(0, 2),
+                'creator_id' => fake()->numberBetween(0, 10),
+                'word_id' => fake()->numberBetween(0, 50),
             ];
         }
         return $data;

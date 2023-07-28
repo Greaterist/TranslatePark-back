@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('text');
             $table->integer('language_id')->constrained('languages', 'id');
             $table->integer('creator_id')->constrained('users', 'id');
+            $table->integer('word_id')->constrained('words', 'id');
             $table->timestamps();
         });
     }

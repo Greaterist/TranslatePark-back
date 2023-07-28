@@ -13,5 +13,6 @@ class word_comment extends Model
         'text',
         'language_id',
         'creator_id',
+        'word_id',
     ];
 }

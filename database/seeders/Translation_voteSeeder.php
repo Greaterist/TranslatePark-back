@@ -8,10 +8,10 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
-class WordSeeder extends Seeder
+class Translation_voteSeeder extends Seeder
 {
     /**
-     * DONE
+     * Run the database seeds.
      */
     public function run(): void
     {
@@ -27,11 +27,9 @@ class WordSeeder extends Seeder
         $data = [];
         for ($i=0; $i<50;$i++){
             $data[] = [
-                'status_id' => 1,
-                'word' => fake()->word(),
-                'language_id' => numberBetween(0, 2),
-                'phonetic' => fake()->word(),
-                'creator_id' => numberBetween(0, 10),
+                'user_id' => fake()->numberBetween(0, 10),
+                'translation_id' => fake()->numberBetween(0, 50),
+                'isPositive' => fake()->boolean(50),
             ];
         }
         return $data;
