@@ -15,7 +15,7 @@ class Translation_voteSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('words')->insert($this->getData());
+        DB::table('translation_votes')->insert($this->getData());
         $this->getData();
     }
 

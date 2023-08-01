@@ -15,7 +15,7 @@ class Word_comment_voteSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('words')->insert($this->getData());
+        DB::table('word_comment_votes')->insert($this->getData());
         $this->getData();
     }
 
