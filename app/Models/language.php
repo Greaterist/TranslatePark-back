@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class language extends Model
 {
     use HasFactory;
+    
 }

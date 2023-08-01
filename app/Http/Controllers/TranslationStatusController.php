@@ -12,7 +12,7 @@ class TranslationStatusController extends Controller
      */
     public function index()
     {
-        //
+        return translation_status::all();
     }
 
     /**
@@ -34,9 +34,11 @@ class TranslationStatusController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(translation_status $translation_status)
+    public function show($id)
     {
-        //
+        $result = translation_status::where('id', $id)->get();
+
+        return response()->json($result);
     }
 
     /**

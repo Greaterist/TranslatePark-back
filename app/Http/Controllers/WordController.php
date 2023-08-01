@@ -28,7 +28,22 @@ class WordController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'status_id' => 'required|exists:word_statuses,id',
+            'word' => 'required|string',
+            'language_id' => 'required|exists:languages,id',
+            'phonetic' => 'required|string',
+            'creator_id' => 'required|exists:users,id',
+        ]);
+
+        word::firstOrCreate([
+            'word' => $request->word,
+            'language_id' => $request->language_id,
+        ],
+        [
+
+        ]);
+
     }
 
     /**
@@ -36,7 +51,7 @@ class WordController extends Controller
      */
     public function show(word $word)
     {
-        //
+        
     }
 
     /**
@@ -65,5 +80,9 @@ class WordController extends Controller
 
     public function test(){
         return response()->json('test');
+    }
+
+    public function getAll(){
+
     }
 }

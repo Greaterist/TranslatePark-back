@@ -12,7 +12,7 @@ class UserRoleController extends Controller
      */
     public function index()
     {
-        //
+        return user_role::all();
     }
 
     /**
@@ -34,9 +34,11 @@ class UserRoleController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(user_role $user_role)
+    public function show($id)
     {
-        //
+        $result = user_role::where('id', $id)->get();
+
+        return response()->json($result);
     }
 
     /**

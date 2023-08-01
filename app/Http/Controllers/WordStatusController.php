@@ -12,7 +12,7 @@ class WordStatusController extends Controller
      */
     public function index()
     {
-        //
+        return word_status::all();
     }
 
     /**
@@ -34,9 +34,11 @@ class WordStatusController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(word_status $word_status)
+    public function show($id)
     {
-        //
+        $result = word_status::where('id', $id)->get();
+
+        return response()->json($result);
     }
 
     /**

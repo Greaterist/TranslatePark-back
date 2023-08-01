@@ -12,7 +12,7 @@ class LanguageController extends Controller
      */
     public function index()
     {
-        //
+        return language::all();
     }
 
     /**
@@ -34,9 +34,11 @@ class LanguageController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(language $language)
+    public function show($id)
     {
-        //
+        $result = language::where('id', $id)->get();
+
+        return response()->json($result);
     }
 
     /**
