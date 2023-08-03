@@ -34,6 +34,7 @@ jobs:
         DB_DATABASE: database/database.sqlite
       run: vendor/bin/phpunit
   run_pull:
+    needs: laravel-tests
     name: run pull
     runs-on: ubuntu-latest
     
