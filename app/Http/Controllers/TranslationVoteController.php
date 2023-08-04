@@ -28,7 +28,32 @@ class TranslationVoteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $validatedData = $request->validate([
+            'user_id' => 'required|image|exists:users,id',
+            'translation_id' => 'required|exists:translations,id',
+            'isPositive' => 'required|boolean',
+        ]);
+
+        if ($validatedData->fails()) {
+            return redirect('post/create')
+                        ->withErrors($validatedData)
+                        ->withInput();
+        }
+
+        if (translation_vote::where('user_id', $request->user_id)->where('translation_id', $request->translation_id)->exists()){
+            translation_vote::create([
+                'user_id' => $request->user_id,
+                'translation_id' => $request->translation_id,
+                'isPositive' => $request->isPositive
+            ]);
+            return response()->json(['message' => 'Favourite stored successfully']);
+        }
+
+        
+
+        return response()->json('error', '400');
+
     }
 
     /**
@@ -50,9 +75,23 @@ class TranslationVoteController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, translation_vote $translation_vote)
+    public function update(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'user_id' => 'required|image|exists:users,id',
+            'translation_id' => 'required|exists:translations,id',
+            'isPositive' => 'required|boolean',
+        ]);
+
+        if ($validatedData->fails()) {
+            return redirect('post/create')
+                        ->withErrors($validatedData)
+                        ->withInput();
+        }
+
+        translation_vote::where('user_id', $request->user_id)->where('translation_id', $request->translation_id)->update(['isPositive' => $request->isPositive]);
+
+
     }
 
     /**

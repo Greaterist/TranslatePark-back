@@ -28,7 +28,7 @@ class TranslationStatusController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -62,6 +62,6 @@ class TranslationStatusController extends Controller
      */
     public function destroy(translation_status $translation_status)
     {
-        //
+        
     }
 }
