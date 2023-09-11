@@ -15,5 +15,6 @@ class LanguagesSeeder extends Seeder
         language::firstOrCreate(["language_code" => 'ru']);
         language::firstOrCreate(["language_code" => 'en']);
         language::firstOrCreate(["language_code" => 'fr']);
+        language::firstOrCreate(["language_code" => 'ja']);
     }
 }
