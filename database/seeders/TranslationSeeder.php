@@ -25,7 +25,7 @@ class TranslationSeeder extends Seeder
         $faker = Faker::create('ru_RU');
 
         $data = [];
-        for ($i=0; $i<50;$i++){
+        for ($i=0; $i<3;$i++){
             $data[] = [
                 'first_word_id' => fake()->numberBetween(0, 50),
                 'second_word_id' => fake()->numberBetween(0, 50),

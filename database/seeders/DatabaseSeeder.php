@@ -14,13 +14,13 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             UserSeeder::class, //fake
+            LanguagesSeeder::class, //real
             WordSeeder::class, //fake
+            Word_statusSeeder::class, //real
             Translation_voteSeeder::class, //fake
             TranslationSeeder::class, //fake
             Word_comment_voteSeeder::class, //fake
             Word_commentSeeder::class, //fake
-            LanguagesSeeder::class, //real
-            Word_statusSeeder::class, //real
             User_roleSeeder::class, //real
         ]);
     }

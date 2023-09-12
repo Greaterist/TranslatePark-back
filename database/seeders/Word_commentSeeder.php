@@ -27,7 +27,7 @@ class Word_commentSeeder extends Seeder
         $data = [];
         for ($i=0; $i<50;$i++){
             $data[] = [
-                'text' => fake()->senence(6, true),
+                'text' => fake()->sentence(6, true),
                 'language_id' => fake()->numberBetween(0, 2),
                 'creator_id' => fake()->numberBetween(0, 10),
                 'word_id' => fake()->numberBetween(0, 50),

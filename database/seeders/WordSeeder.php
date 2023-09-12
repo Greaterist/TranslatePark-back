@@ -25,13 +25,13 @@ class WordSeeder extends Seeder
         $faker = Faker::create('ru_RU');
 
         $data = [];
-        for ($i=0; $i<50;$i++){
+        for ($i=0; $i<3;$i++){
             $data[] = [
                 'status_id' => 1,
                 'word' => fake()->word(),
-                'language_id' => numberBetween(0, 2),
+                'language_id' => fake()->numberBetween(0, 2),
                 'phonetic' => fake()->word(),
-                'creator_id' => numberBetween(0, 10),
+                'creator_id' => fake()->numberBetween(0, 10),
             ];
         }
         return $data;
