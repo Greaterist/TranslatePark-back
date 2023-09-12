@@ -1,5 +1,14 @@
 <?php
 
+use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\TranslationController;
+use App\Http\Controllers\TranslationStatusController;
+use App\Http\Controllers\TranslationVoteController;
+use App\Http\Controllers\UserRoleController;
+use App\Http\Controllers\WordCommentVoteController;
+use App\Http\Controllers\WordController;
+use App\Http\Controllers\WordStatusController;
+use Database\Seeders\Word_commentSeeder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
