@@ -29,8 +29,15 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/test', [WordController::class, 'test']);
 
+
+
+
+Route::get('/getByLang', [WordController::class, 'getByLang']);
+Route::get('/getWordSearch/{text}', [WordController::class, 'getWordSearch']);
 Route::apiResource('/words', WordController::class);
-Route::apiResource('/languages', LanguageController::class);
+
+
+
 Route::apiResource('/translations', TranslationController::class);
 Route::apiResource('/translation_statuses', TranslationStatusController::class);
 Route::apiResource('/translation_votes', TranslationVoteController::class);
@@ -38,3 +45,4 @@ Route::apiResource('/user_roles', UserRoleController::class);
 Route::apiResource('/word_comment_votes', WordCommentVoteController::class);
 Route::apiResource('/word_comments', Word_commentSeeder::class);
 Route::apiResource('/word_statuses', WordStatusController::class);
+Route::apiResource('/languages', LanguageController::class);

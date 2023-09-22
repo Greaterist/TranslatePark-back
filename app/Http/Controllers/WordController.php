@@ -85,4 +85,17 @@ class WordController extends Controller
     public function getAll(){
 
     }
+
+    public function getByLang($id){
+        return word::where('language_id', $id)
+            ->get();
+    }
+
+
+    public function getWordSearch($text){
+
+        $result = word::where('word', 'like', '%'. $text . '%')->get();
+
+        return response()->json($result);
+    }
 }
