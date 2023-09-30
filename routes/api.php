@@ -39,6 +39,11 @@ Route::apiResource('/words', WordController::class);
 
 
 Route::apiResource('/translations', TranslationController::class);
+Route::get('/getTranslationById/{id}', [TranslationController::class, 'getTranslationById']);
+
+
+
+
 Route::apiResource('/translation_statuses', TranslationStatusController::class);
 Route::apiResource('/translation_votes', TranslationVoteController::class);
 Route::apiResource('/user_roles', UserRoleController::class);

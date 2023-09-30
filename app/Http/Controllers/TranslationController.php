@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\translation;
+use App\Models\word;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TranslationController extends Controller
 {
@@ -12,7 +14,7 @@ class TranslationController extends Controller
      */
     public function index()
     {
-        //
+        return translation::all();
     }
 
     /**
@@ -34,9 +36,15 @@ class TranslationController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(translation $translation)
+    public function show($id)
     {
-        //
+
+        $result = DB::table('words')
+            ->where('id', $id)
+            ->select('id', 'word', 'phonetic')
+            ->get();
+
+        return response()->json($result);
     }
 
     /**
@@ -61,5 +69,25 @@ class TranslationController extends Controller
     public function destroy(translation $translation)
     {
         //
+    }
+
+    public function getTranslationById($id)
+    {
+        $result = DB::table('words')
+            ->join('translations', function ($join) use ($id) {
+                $join->on('words.id', '=', 'translations.second_word_id')
+                    ->where('translations.first_word_id', '=', $id)
+                    ->orWhere(function ($query) use ($id) {
+                        $query->on('words.id', '=', 'translations.first_word_id')
+                            ->where('translations.second_word_id', '=', $id);
+                    });
+            })
+            ->select('words.id', 'word')
+            ->get();
+
+
+
+
+        return response()->json($result);
     }
 }
