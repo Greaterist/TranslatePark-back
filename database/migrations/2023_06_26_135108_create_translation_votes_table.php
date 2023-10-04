@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('user_id')->constrained('users', 'id');
             $table->integer('translation_id')->constrained('translations', 'id');
-            $table->boolean('isPositive');
+            $table->boolean('ispositive');
             $table->timestamps();
             
         });

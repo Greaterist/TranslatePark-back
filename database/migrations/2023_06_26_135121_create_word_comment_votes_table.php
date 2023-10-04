@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('user_id')->constrained('users', 'id');
             $table->integer('word_comment_id')->constrained('word_comments', 'id');
-            $table->boolean('isPositive');
+            $table->boolean('ispositive');
             $table->timestamps();
         });
     }
