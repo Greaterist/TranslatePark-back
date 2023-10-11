@@ -5,6 +5,7 @@ use App\Http\Controllers\TranslationController;
 use App\Http\Controllers\TranslationStatusController;
 use App\Http\Controllers\TranslationVoteController;
 use App\Http\Controllers\UserRoleController;
+use App\Http\Controllers\WordCommentController;
 use App\Http\Controllers\WordCommentVoteController;
 use App\Http\Controllers\WordController;
 use App\Http\Controllers\WordStatusController;
@@ -48,6 +49,13 @@ Route::apiResource('/translation_statuses', TranslationStatusController::class);
 Route::apiResource('/translation_votes', TranslationVoteController::class);
 Route::apiResource('/user_roles', UserRoleController::class);
 Route::apiResource('/word_comment_votes', WordCommentVoteController::class);
-Route::apiResource('/word_comments', Word_commentSeeder::class);
+
+
+Route::apiResource('/word_comments', WordCommentController::class);
+Route::get('/getByWordId/{id}', [WordCommentController::class, 'getByWordId']);
+
+
+
+
 Route::apiResource('/word_statuses', WordStatusController::class);
 Route::apiResource('/languages', LanguageController::class);

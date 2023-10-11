@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\word_comment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class WordCommentController extends Controller
 {
@@ -61,5 +62,18 @@ class WordCommentController extends Controller
     public function destroy(word_comment $word_comment)
     {
         //
+    }
+
+    public function getByWordId($id){
+
+        $result = DB::table('word_comments')
+            ->join('users', 'word_comments.creator_id', '=', 'users.id')
+            ->join('word_comment_votes', 'word_comments.id', '=', 'word_comment_votes.word_comment_id')
+            ->select('word_comments.text', 'users.name', DB::raw('SUM(CASE WHEN word_comment_votes.isPositive = true THEN 1 ELSE 0 END) AS positive'), DB::raw('SUM(CASE WHEN word_comment_votes.isPositive = true THEN 0 ELSE 1 END) AS negative'), 'word_comments.created_at')
+            ->where('word_comments.word_id', $id)
+            ->groupBy('word_comments.text', 'users.name', 'word_comments.created_at')
+            ->get();
+
+        return response()->json($result);
     }
 }

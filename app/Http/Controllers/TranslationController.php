@@ -82,7 +82,10 @@ class TranslationController extends Controller
                             ->where('translations.second_word_id', '=', $id);
                     });
             })
-            ->select('words.id', 'word')
+            ->leftJoin('translation_votes', 'translations.id', '=', 'translation_votes.translation_id')
+            ->select('words.id', 'word', DB::raw('SUM(CASE WHEN translation_votes.isPositive = true THEN 1 ELSE 0 END) - SUM(CASE WHEN translation_votes.isPositive = true THEN 0 ELSE 1 END) AS rating'))
+            ->groupBy('words.id', 'word',)
+            ->orderBy('rating', 'desc')
             ->get();
 
 
